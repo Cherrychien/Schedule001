@@ -5,13 +5,13 @@
       <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
       <script>
           var myApp = angular.module('myApp', []);
+          myApp.controller("IntroController", function($scope){
+              $scope.name = 'Lily';
+          });
       </script>
    </head>
    
    <body ng-app="myApp">
-      <div>
-          1 + 2 = {{1+2}}
-      </div>
-      
+      <div ng-controller="IntroController">Hello, I'm {{name}}</div>
    </body>
 </html>
