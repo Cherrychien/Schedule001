@@ -12,6 +12,9 @@
    </head>
    
    <body ng-app="myApp">
-      <div ng-controller="IntroController">Hello, I'm {{name}}</div>
+      <div ng-controller="IntroController">
+          <input type="text" ng-model="name">
+          <h1>新進人員: {{name}}</h1>
+      </div>
    </body>
 </html>
