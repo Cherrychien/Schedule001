@@ -1,10 +1,20 @@
 var http = require('http');
-var server = http.createServer(function(request, response){
-console.log("Request received.");
-response.writeHead(200, {"Content-Type": "text/plain"});
-response.write("Hello World");
-response.end();
-});
+var Router = require('router');
+var server;
+var router = new Router();
 
-server.listen(3000);
-console.log("Node.js web server at port 3000 is running.");
+server = http.createServer(function(req, resp) {
+    router(req, resp, function(msg){
+        if(!msg) {
+            resp.writeHead(404);
+        }
+        else {
+            console.log(msg.message, msg.stack);
+            resp.writeHead(400);
+        }
+        resp.end('RESTful API Server is running!');
+    });
+});
+server.listen(3000, function() {
+    console.log('Listening on port 3000');
+});
